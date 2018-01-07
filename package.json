@@ -1,15 +1,16 @@
 {
-  "name": "backend-stub",
+  "name": "backend",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node server.js"
+    "dev": "node index.js",
+    "start": "NODE_ENV=production node index.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.18.2",
-    "express": "^4.16.2"
+    "express": "^4.15.4"
   }
 }

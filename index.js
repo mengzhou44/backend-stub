@@ -1,7 +1,6 @@
 const express = require("express");
-const bodyParser = require('body-parser');
+const bodyParser = require("body-parser");
 
-const PORT_NUMBER = 3000;
 
 const app = express();
 
@@ -14,12 +13,33 @@ app.use(
 
 app.get("/", (req, res) => {
     res.send("Hell, World!");
-})
+});
+
+
+app.get("/tags", (req, res) => {
+    res.send(
+        {
+            "AAAA00003253": "22900343434",
+            "AAAA00003255": "27332383312",
+            "AAAA00003256": "43947394343",
+            "AAAA00003259": "273323833032",
+        });
+});
+
+
 
 app.post("/scans", (req, res) => {
     console.log(JSON.stringify(req.body, null, 4));
     res.send({
         success: true
+    });
+});
+
+
+app.post("/register", (req, res) => {
+    console.log(req.body.macAddress);
+    res.send({
+        token: "DD23FJSSS-09892"
     });
 });
 
@@ -31,11 +51,11 @@ app.get("/clients", (req, res) => {
             "jobs": [
                 {
                     "id": 76652,
-                    "name": "GEMS-2017 4544232"
+                    "name": "18-001-06-0102"
                 },
                 {
                     "id": 76653,
-                    "name": "GEMS-2017 4544239"
+                    "name": "18-002-03-0105"
                 }
             ]
         },
@@ -45,11 +65,11 @@ app.get("/clients", (req, res) => {
             "jobs": [
                 {
                     "id": 76651,
-                    "name": "GEMS-2017 33er241"
+                    "name": "18-003-02-0105"
                 },
                 {
                     "id": 76659,
-                    "name": "GEMS-2017 WER2333"
+                    "name": "18-004-01-0109"
                 }
             ]
         },
@@ -67,6 +87,10 @@ app.get("/clients", (req, res) => {
     res.send(clients);
 })
 
-app.listen(PORT_NUMBER, () => {
-    console.log(`Server is running on port ${PORT_NUMBER}`);
-})
+const PORT = process.env.PORT || 5000;
+
+app.listen(PORT, error => {
+    if (error) throw error;
+    console.log('Server running on port: ' + PORT);
+});
+
