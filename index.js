@@ -1,6 +1,8 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 
+const { Client } = require('pg');
+
 
 const app = express();
 
@@ -87,10 +89,82 @@ app.get("/clients", (req, res) => {
     res.send(clients);
 })
 
+
+const pgClient = new Client({
+    user: "postgres",
+    database: "gems_smartmats_qa",
+    server: "localhost",
+    password: "Aa1197344",
+    port: 5432
+});
+
+
+app.get("/clients1", (req, res) => {
+    pgClient.connect();
+
+    pgClient.query("SELECT * FROM  clients", (err, result) => {
+        if (err) {
+            console.log("not able to get connection " + err);
+            res.status(400).send(err);
+        }
+        const collection = result.rows;
+        res.status(200).send(collection);
+        pgClient.end();
+    });
+});
+
+app.post("/clients", (req, res) => {
+
+    const { name, company } = req.body;
+    const query = {
+        text: `INSERT INTO clients(id, name, company) 
+        VALUES(nextval('clients_id_seq'),$1, $2) 
+        RETURNING *`,
+        values: [name, company]
+    };
+
+    pgClient.connect();
+    pgClient.query(query, (err, result) => {
+        if (err) {
+            console.log("Not able to insert client.");
+            res.status(400).send(err);
+            return;
+        }
+        res.status(200).send({ success: true });
+        pgClient.end();
+    })
+});
+
+
+app.post("/clients/update", (req, res) => {
+
+    const { id, name, company } = req.body;
+    const query = {
+        text: `UPDATE clients
+                   SET name =$2,
+                       company = $3
+                   WHERE id = $1
+                   RETURNING *`,
+        values: [id, name, company]
+    };
+
+    pgClient.connect();
+    pgClient.query(query, (err, result) => {
+        if (err) {
+            console.log("Not able to edit client.");
+            res.status(400).send(err);
+            return;
+        }
+        res.status(200).send({ success: true });
+        pgClient.end();
+    })
+})
+
+
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, error => {
     if (error) throw error;
-    console.log('Server running on port: ' + PORT);
+    console.log("Server running on port: " + PORT);
 });
 
