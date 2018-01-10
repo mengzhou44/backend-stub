@@ -1,7 +1,8 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+const db = require("./db");
 
-const { Client } = require('pg');
+const { Pool, Client } = require('pg');
 
 
 const app = express();
@@ -17,20 +18,19 @@ app.get("/", (req, res) => {
     res.send("Hell, World!");
 });
 
-
 app.get("/tags", (req, res) => {
     res.send(
-        {
-            "AAAA00003253": "22900343434",
-            "AAAA00003255": "27332383312",
-            "AAAA00003256": "43947394343",
-            "AAAA00003259": "273323833032",
-        });
+        [
+            ["AAAA00003253", "22900343434"],
+            ["AAAA00003255", "27332383312"],
+            ["AAAA00003256", "43947394343"],
+            ["AAAA00003259", "273323833032"]
+        ]);
 });
 
 
 
-app.post("/scans", (req, res) => {
+app.post("/field-data", (req, res) => {
     console.log(JSON.stringify(req.body, null, 4));
     res.send({
         success: true
@@ -48,8 +48,8 @@ app.post("/register", (req, res) => {
 app.get("/clients", (req, res) => {
     const clients = [
         {
-            "clientId": 343444,
-            "clientName": "Cenovous",
+            "clientid": 343444,
+            "clientname": "Cenovous",
             "jobs": [
                 {
                     "id": 76652,
@@ -62,8 +62,8 @@ app.get("/clients", (req, res) => {
             ]
         },
         {
-            "clientId": 343448,
-            "clientName": "Nexus",
+            "clientid": 343448,
+            "clientname": "Nexus",
             "jobs": [
                 {
                     "id": 76651,
@@ -76,8 +76,8 @@ app.get("/clients", (req, res) => {
             ]
         },
         {
-            "clientId": 343449,
-            "clientName": "Suncor",
+            "clientid": 343449,
+            "clientname": "Suncor",
             "jobs": [
                 {
                     "id": 76650,
@@ -89,55 +89,40 @@ app.get("/clients", (req, res) => {
     res.send(clients);
 })
 
-
-const pgClient = new Client({
-    user: "postgres",
-    database: "gems_smartmats_qa",
-    server: "localhost",
-    password: "Aa1197344",
-    port: 5432
-});
-
-
-app.get("/clients1", (req, res) => {
-    pgClient.connect();
-
-    pgClient.query("SELECT * FROM  clients", (err, result) => {
-        if (err) {
-            console.log("not able to get connection " + err);
-            res.status(400).send(err);
-        }
-        const collection = result.rows;
-        res.status(200).send(collection);
-        pgClient.end();
-    });
-});
-
 app.post("/clients", (req, res) => {
-
-    const { name, company } = req.body;
+    const { id } = req.body;
     const query = {
-        text: `INSERT INTO clients(id, name, company) 
-        VALUES(nextval('clients_id_seq'),$1, $2) 
-        RETURNING *`,
-        values: [name, company]
+        text: "SELECT * FROM clients  WHERE id = $1",
+        values: [id]
     };
-
-    pgClient.connect();
-    pgClient.query(query, (err, result) => {
-        if (err) {
-            console.log("Not able to insert client.");
-            res.status(400).send(err);
-            return;
-        }
-        res.status(200).send({ success: true });
-        pgClient.end();
+    db.execute(query).then((result) => {
+        res.status(200).send(result);
+    }).catch(err => {
+        console.log(err);
+        res.status(400).send(err);
+        return;
     })
 });
 
 
-app.post("/clients/update", (req, res) => {
+app.post("/clients/add", (req, res) => {
+    const { name, company } = req.body;
+    const query = {
+        text: `INSERT INTO clients(name, company) 
+        VALUES($1, $2) 
+        RETURNING *`,
+        values: [name, company]
+    };
 
+    db.execute(query).then((result) => {
+        res.status(200).send({ success: true });
+    }).catch(err => {
+        console.log(err);
+        res.status(400).send(err);
+    })
+});
+
+app.post("/clients/update", (req, res) => {
     const { id, name, company } = req.body;
     const query = {
         text: `UPDATE clients
@@ -148,18 +133,29 @@ app.post("/clients/update", (req, res) => {
         values: [id, name, company]
     };
 
-    pgClient.connect();
-    pgClient.query(query, (err, result) => {
-        if (err) {
-            console.log("Not able to edit client.");
-            res.status(400).send(err);
-            return;
-        }
+    db.execute(query).then((result) => {
         res.status(200).send({ success: true });
-        pgClient.end();
+    }).catch(err => {
+        console.log("Not able to edit client.");
+        res.status(400).send(err);
     })
-})
+});
 
+app.post("/clients/remove", (req, res) => {
+    const { id } = req.body;
+    const query = {
+        text: `DELETE FROM clients
+                   WHERE id = $1
+                   RETURNING *`,
+        values: [id]
+    };
+
+    db.execute(query).then((result) => {
+        res.status(200).send({ success: true });
+    }).catch(err => {
+        res.status(400).send("Not able to delete client.");
+    })
+});
 
 const PORT = process.env.PORT || 5000;
 
