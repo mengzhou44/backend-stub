@@ -51,6 +51,7 @@ async function executeInTransaction(callback) {
     finally {
         client.release();
     }
+
 }
 
 

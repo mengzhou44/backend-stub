@@ -35,6 +35,4 @@ const populateClients = () => {
 };
 
 
-
-
 module.exports = { populateClients };
