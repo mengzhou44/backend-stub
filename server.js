@@ -15,10 +15,10 @@ app.use(
     })
 );
 
-require("./routes/clients-route")(app);
-require("./routes/field-data-route")(app);
-require("./routes/home-route")(app);
-require("./routes/tags-route")(app);
+require("./routes/clients-routes")(app);
+require("./routes/field-data-routes")(app);
+require("./routes/home-routes")(app);
+require("./routes/tags-routes")(app);
 
 const PORT = process.env.PORT || 5000;
 

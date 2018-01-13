@@ -45,13 +45,14 @@ async function executeInTransaction(callback) {
         await client.query("BEGIN");
         await callback(client);
         await client.query("COMMIT");
+        return;
     } catch (error) {
         await client.query("ROLLBACK");
+        throw error;
     }
     finally {
         client.release();
     }
-
 }
 
 
