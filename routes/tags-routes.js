@@ -2,7 +2,6 @@ module.exports = (app) => {
 
     app.get("/tags", (req, res) => {
         var header = req.headers["authorization"] || "";
-        console.log("tags header:", header);
         res.send(
             [
                 ["AAAA00003253", "22900343434"],

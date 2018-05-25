@@ -1,0 +1,90 @@
+2018-01-16T04:41:51.778Z - info: Initializing jsreport@1.9.2 in development mode using configuration file: jsreport.config.json
+2018-01-16T04:41:51.779Z - info: Setting process based strategy for rendering. Please visit http://jsreport.net/learn/configuration for information how to get more performance.
+2018-01-16T04:41:51.783Z - info: Searching for available extensions in /Users/mengzhou44/Desktop/smartmat-new/backend-stub/
+2018-01-16T04:41:51.788Z - info: Extensions location cache /var/folders/gv/j6j76d112l5_y1gjxxy6mzx40000gn/T/jsreport/core/locations.json contains older information, crawling
+2018-01-16T04:41:52.303Z - info: Found 30 extensions
+2018-01-16T04:41:52.328Z - info: Using extension import-export
+2018-01-16T04:41:52.551Z - info: Using extension tags
+2018-01-16T04:41:52.561Z - info: Using extension templates
+2018-01-16T04:41:52.565Z - info: Using extension jsrender
+2018-01-16T04:41:52.566Z - info: Using extension cli
+2018-01-16T04:41:52.567Z - info: Using extension handlebars
+2018-01-16T04:41:52.569Z - info: Using extension debug
+2018-01-16T04:41:52.570Z - info: Using extension express
+2018-01-16T04:41:52.655Z - info: Using extension fop-pdf
+2018-01-16T04:41:52.663Z - info: Using extension phantom-pdf
+2018-01-16T04:41:52.713Z - info: Using extension fs-store
+2018-01-16T04:41:53.065Z - info: Using extension authorization
+2018-01-16T04:41:53.066Z - info: Using extension images
+2018-01-16T04:41:53.071Z - info: Using extension child-templates
+2018-01-16T04:41:53.074Z - info: Using extension browser-client
+2018-01-16T04:41:53.076Z - info: Using extension licensing
+2018-01-16T04:41:53.118Z - info: Using extension data
+2018-01-16T04:41:53.120Z - info: Using extension text
+2018-01-16T04:41:53.122Z - info: Using extension reports
+2018-01-16T04:41:53.127Z - info: Using extension resources
+2018-01-16T04:41:53.129Z - info: Using extension base
+2018-01-16T04:41:53.130Z - info: Using extension studio
+2018-01-16T04:41:53.216Z - info: Using extension html-to-xlsx
+2018-01-16T04:41:53.320Z - info: Using extension scripts
+2018-01-16T04:41:53.323Z - info: Using extension assets
+2018-01-16T04:41:53.342Z - info: Using extension scheduling
+2018-01-16T04:41:53.445Z - info: Using extension xlsx
+2018-01-16T04:41:53.726Z - info: Using extension sample-template
+2018-01-16T04:41:53.728Z - info: Using extension public-templates
+2018-01-16T04:41:53.735Z - info: Initializing fs storage at /Users/mengzhou44/Desktop/smartmat-new/backend-stub/data
+2018-01-16T04:41:53.926Z - info: Creating default express app.
+2018-01-16T04:41:53.982Z - info: jsreport server successfully started on http port: 5488
+2018-01-16T04:41:53.989Z - info: Verifying license key free
+2018-01-16T04:41:53.991Z - info: Using free license
+2018-01-16T04:41:54.144Z - info: reporter initialized
+2018-01-16T04:42:55.084Z - info: Starting rendering request 1 (user: null) requestId=1
+2018-01-16T04:42:55.088Z - info: Rendering template {shortid:HJH11D83ce, recipe:phantom-pdf,engine:handlebars} requestId=1
+2018-01-16T04:42:55.190Z - error: Error when processing render request Error during rendering report: Unsupported module in scripts: http. To enable require on particular module, you need to update the configuration as {"scripts": { "allowedModules": ["http"] } } ... Alternatively you can also set "*" to allowedModules to enable everything /Users/mengzhou44/Desktop/smartmat-new/backend-stub/node_modules/jsreport-scripts/lib/scriptEvalChild.js:44
+    throw new Error('Unsupported module in scripts: ' + moduleName + '. To enable require on particular module, you need to update the configuration as ' +
+    ^
+
+Error: Unsupported module in scripts: http. To enable require on particular module, you need to update the configuration as {"scripts": { "allowedModules": ["http"] } } ... Alternatively you can also set "*" to allowedModules to enable everything
+    at _require (/Users/mengzhou44/Desktop/smartmat-new/backend-stub/node_modules/jsreport-scripts/lib/scriptEvalChild.js:44:11)
+    at evalmachine.<anonymous>:2:12
+    at ContextifyScript.Script.runInContext (vm.js:59:29)
+    at ContextifyScript.Script.runInNewContext (vm.js:65:15)
+    at Object.runInNewContext (vm.js:148:38)
+    at module.exports (/Users/mengzhou44/Desktop/smartmat-new/backend-stub/node_modules/jsreport-scripts/lib/scriptEvalChild.js:123:6)
+    at process.<anonymous> (/Users/mengzhou44/Desktop/smartmat-new/backend-stub/node_modules/script-manager/lib/worker-processes.js:48:36)
+    at process.emit (events.js:159:13)
+    at emit (internal/child_process.js:790:12)
+    at _combinedTickCallback (internal/process/next_tick.js:141:11) requestId=1
+2018-01-16T04:42:55.191Z - error: Error during processing request: http://localhost:5488/api/report/Orders details: Error during rendering report: Unsupported module in scripts: http. To enable require on particular module, you need to update the configuration as {"scripts": { "allowedModules": ["http"] } } ... Alternatively you can also set "*" to allowedModules to enable everything /Users/mengzhou44/Desktop/smartmat-new/backend-stub/node_modules/jsreport-scripts/lib/scriptEvalChild.js:44
+    throw new Error('Unsupported module in scripts: ' + moduleName + '. To enable require on particular module, you need to update the configuration as ' +
+    ^
+
+Error: Unsupported module in scripts: http. To enable require on particular module, you need to update the configuration as {"scripts": { "allowedModules": ["http"] } } ... Alternatively you can also set "*" to allowedModules to enable everything
+    at _require (/Users/mengzhou44/Desktop/smartmat-new/backend-stub/node_modules/jsreport-scripts/lib/scriptEvalChild.js:44:11)
+    at evalmachine.<anonymous>:2:12
+    at ContextifyScript.Script.runInContext (vm.js:59:29)
+    at ContextifyScript.Script.runInNewContext (vm.js:65:15)
+    at Object.runInNewContext (vm.js:148:38)
+    at module.exports (/Users/mengzhou44/Desktop/smartmat-new/backend-stub/node_modules/jsreport-scripts/lib/scriptEvalChild.js:123:6)
+    at process.<anonymous> (/Users/mengzhou44/Desktop/smartmat-new/backend-stub/node_modules/script-manager/lib/worker-processes.js:48:36)
+    at process.emit (events.js:159:13)
+    at emit (internal/child_process.js:790:12)
+    at _combinedTickCallback (internal/process/next_tick.js:141:11)
+2018-01-16T04:43:03.418Z - info: Starting rendering request 2 (user: null) requestId=2
+2018-01-16T04:43:03.419Z - info: Rendering template {shortid:r18kyD83ce, recipe:xlsx,engine:handlebars} requestId=2
+2018-01-16T04:43:05.144Z - info: Rendering request 2 finished in 1727 ms requestId=2
+2018-01-16T04:43:26.535Z - info: Starting rendering request 3 (user: null) requestId=3
+2018-01-16T04:43:26.536Z - info: Rendering template {shortid:r18kyD83ce, recipe:xlsx,engine:handlebars} requestId=3
+2018-01-16T04:43:28.213Z - info: Rendering request 3 finished in 1678 ms requestId=3
+2018-01-16T04:43:49.802Z - info: Starting rendering request 4 (user: null) requestId=4
+2018-01-16T04:43:49.804Z - info: Rendering template {shortid:r18kyD83ce, recipe:xlsx,engine:handlebars} requestId=4
+2018-01-16T04:43:51.470Z - info: Rendering request 4 finished in 1668 ms requestId=4
+2018-01-16T04:44:34.263Z - info: Starting rendering request 5 (user: null) requestId=5
+2018-01-16T04:44:34.264Z - info: Rendering template {shortid:r18kyD83ce, recipe:xlsx,engine:handlebars} requestId=5
+2018-01-16T04:44:35.947Z - info: Rendering request 5 finished in 1684 ms requestId=5
+2018-01-16T04:44:46.333Z - info: Starting rendering request 6 (user: null) requestId=6
+2018-01-16T04:44:46.334Z - info: Rendering template {shortid:rkJTnK2ce, recipe:phantom-pdf,engine:handlebars} requestId=6
+2018-01-16T04:44:48.262Z - info: Rendering request 6 finished in 1929 ms requestId=6
+2018-01-16T04:48:02.934Z - info: Starting rendering request 7 (user: null) requestId=7
+2018-01-16T04:48:02.936Z - info: Rendering template {shortid:rkJTnK2ce, recipe:phantom-pdf,engine:handlebars} requestId=7
+2018-01-16T04:48:04.887Z - info: Rendering request 7 finished in 1953 ms requestId=7

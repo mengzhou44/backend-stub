@@ -3,14 +3,92 @@ const db = require("../db");
 
 module.exports = (app) => {
 
-
     app.get("/clients", (req, res) => {
-        var header = req.headers["authorization"] || "";
-        db.execute({
-            text: "SELECT * FROM clients"
-        }).then(result => {
-            res.status(200).send(result);
-        })
+        res.send(
+            [
+                {
+                    jobs: [
+                        {
+                            id: 111,
+                            name: 'job 111'
+                        },
+                        {
+                            id: 112,
+                            name: 'job 112'
+                        },
+                        {
+                            id: 113,
+                            name: 'job 113'
+                        },
+                        {
+                            id: 114,
+                            name: 'job 114'
+                        },
+                        {
+                            id: 115,
+                            name: 'job 115'
+                        },
+                        {
+                            id: 116,
+                            name: 'job 116'
+                        },
+                        {
+                            id: 117,
+                            name: 'job 111'
+                        },
+                        {
+                            id: 118,
+                            name: 'job 112'
+                        },
+                        {
+                            id: 119,
+                            name: 'job 113'
+                        },
+                        {
+                            id: 120,
+                            name: 'job 114'
+                        },
+                        {
+                            id: 121,
+                            name: 'job 115'
+                        },
+                        {
+                            id: 122,
+                            name: 'job 116'
+                        },
+                        {
+                            id: 123,
+                            name: 'job 123'
+                        },
+                        {
+                            id: 124,
+                            name: 'job 124'
+                        },
+                        {
+                            id: 125,
+                            name: 'job 125'
+                        },
+                        {
+                            id: 126,
+                            name: 'job 126'
+                        }
+
+                    ],
+                    clientName: 'Daniel Zhou',
+                    clientId: 105
+                },
+                {
+                    jobs: [
+                        {
+                            id: 109,
+                            name: 'Edson YWP Yard'
+                        }
+                    ],
+                    clientName: 'GEMS',
+                    clientId: 103
+                }
+            ]
+        );
     })
 
 
@@ -20,6 +98,7 @@ module.exports = (app) => {
             text: "SELECT * FROM clients  WHERE id = $1",
             values: [id]
         };
+
         db.execute(query).then((result) => {
             res.status(200).send(result);
         }).catch(err => {

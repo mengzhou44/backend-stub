@@ -1,0 +1,30 @@
+2018-01-16T04:42:55.190Z - error: Error when processing render request Error during rendering report: Unsupported module in scripts: http. To enable require on particular module, you need to update the configuration as {"scripts": { "allowedModules": ["http"] } } ... Alternatively you can also set "*" to allowedModules to enable everything /Users/mengzhou44/Desktop/smartmat-new/backend-stub/node_modules/jsreport-scripts/lib/scriptEvalChild.js:44
+    throw new Error('Unsupported module in scripts: ' + moduleName + '. To enable require on particular module, you need to update the configuration as ' +
+    ^
+
+Error: Unsupported module in scripts: http. To enable require on particular module, you need to update the configuration as {"scripts": { "allowedModules": ["http"] } } ... Alternatively you can also set "*" to allowedModules to enable everything
+    at _require (/Users/mengzhou44/Desktop/smartmat-new/backend-stub/node_modules/jsreport-scripts/lib/scriptEvalChild.js:44:11)
+    at evalmachine.<anonymous>:2:12
+    at ContextifyScript.Script.runInContext (vm.js:59:29)
+    at ContextifyScript.Script.runInNewContext (vm.js:65:15)
+    at Object.runInNewContext (vm.js:148:38)
+    at module.exports (/Users/mengzhou44/Desktop/smartmat-new/backend-stub/node_modules/jsreport-scripts/lib/scriptEvalChild.js:123:6)
+    at process.<anonymous> (/Users/mengzhou44/Desktop/smartmat-new/backend-stub/node_modules/script-manager/lib/worker-processes.js:48:36)
+    at process.emit (events.js:159:13)
+    at emit (internal/child_process.js:790:12)
+    at _combinedTickCallback (internal/process/next_tick.js:141:11) requestId=1
+2018-01-16T04:42:55.191Z - error: Error during processing request: http://localhost:5488/api/report/Orders details: Error during rendering report: Unsupported module in scripts: http. To enable require on particular module, you need to update the configuration as {"scripts": { "allowedModules": ["http"] } } ... Alternatively you can also set "*" to allowedModules to enable everything /Users/mengzhou44/Desktop/smartmat-new/backend-stub/node_modules/jsreport-scripts/lib/scriptEvalChild.js:44
+    throw new Error('Unsupported module in scripts: ' + moduleName + '. To enable require on particular module, you need to update the configuration as ' +
+    ^
+
+Error: Unsupported module in scripts: http. To enable require on particular module, you need to update the configuration as {"scripts": { "allowedModules": ["http"] } } ... Alternatively you can also set "*" to allowedModules to enable everything
+    at _require (/Users/mengzhou44/Desktop/smartmat-new/backend-stub/node_modules/jsreport-scripts/lib/scriptEvalChild.js:44:11)
+    at evalmachine.<anonymous>:2:12
+    at ContextifyScript.Script.runInContext (vm.js:59:29)
+    at ContextifyScript.Script.runInNewContext (vm.js:65:15)
+    at Object.runInNewContext (vm.js:148:38)
+    at module.exports (/Users/mengzhou44/Desktop/smartmat-new/backend-stub/node_modules/jsreport-scripts/lib/scriptEvalChild.js:123:6)
+    at process.<anonymous> (/Users/mengzhou44/Desktop/smartmat-new/backend-stub/node_modules/script-manager/lib/worker-processes.js:48:36)
+    at process.emit (events.js:159:13)
+    at emit (internal/child_process.js:790:12)
+    at _combinedTickCallback (internal/process/next_tick.js:141:11)
